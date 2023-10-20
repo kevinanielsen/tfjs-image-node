@@ -1,14 +1,29 @@
 const tf = require("@tensorflow/tfjs");
 const Jimp = require("jimp");
 
-const classifyImage = async (
-  MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string
-) => {
-  const labels = require(`${MODEL_DIR_PATH}/metadata.json`).labels;
+interface IMetadata extends JSON {
+  labels: string[];
+}
 
-  const model = await tf.loadLayersModel(`file://${MODEL_DIR_PATH}/model.json`);
-  model.summary();
+type ResultType = {
+  label: string;
+  probability: string;
+};
+
+type ClassifyImageType = (
+  MODEL_DIR_PATH: string,
+  IMAGE_FILE_PATH: string,
+  METADATA: IMetadata
+) => Promise<ResultType[]>;
+
+const classifyImage: ClassifyImageType = async (
+  MODEL_DIR_PATH: string,
+  IMAGE_FILE_PATH: string,
+  METADATA: IMetadata
+) => {
+  let labels: string[] = METADATA.labels;
+
+  const model = await tf.loadLayersModel(`${MODEL_DIR_PATH}/model.json`);
 
   const image = await Jimp.read(IMAGE_FILE_PATH);
   image.cover(
@@ -45,11 +60,15 @@ const classifyImage = async (
 
   const predictions = await model.predict(img_tensor).dataSync();
 
+  let result: ResultType[] = [];
+
   for (let i = 0; i < predictions.length; i++) {
     const label = labels[i];
     const probability = predictions[i];
-    console.log(`${label}: ${probability}`);
+    result.push({ label: label, probability: probability });
   }
+
+  return result.sort((a, b) => Number(b.probability) - Number(a.probability));
 };
 
-export default classifyImage;
+module.exports = classifyImage;
