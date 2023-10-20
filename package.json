@@ -1,0 +1,31 @@
+{
+  "name": "tfjs-image-node",
+  "version": "0.0.1",
+  "description": "A simple image classifier using tfjs and running in node.js",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinanielsen/tfjs-image-node/"
+  },
+  "keywords": [
+    "tfjs",
+    "ai",
+    "image",
+    "classifier",
+    "node",
+    "node.js",
+    "tensorflow",
+    "tensorflow.js",
+    "javascript",
+    "typescript",
+    "npm"
+  ],
+  "author": "Kevin Alex Nielsen",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
