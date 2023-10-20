@@ -1029,6 +1029,13 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
+"@types/jimp@^0.2.28":
+  version "0.2.28"
+  resolved "https://registry.npmjs.org/@types/jimp/-/jimp-0.2.28.tgz"
+  integrity sha512-nLIVbImtcaEf90y2XQsMzfgWK5EZxfDg6EVWobrkFTFJiLqmx/yU5Jh+LYUN94ztzXX1GwQLFYHaEi8tfMeZzw==
+  dependencies:
+    jimp "*"
+
 "@types/long@^4.0.1":
   version "4.0.2"
   resolved "https://registry.npmjs.org/@types/long/-/long-4.0.2.tgz"
@@ -2359,7 +2366,7 @@ jest@^29.0.0, jest@^29.7.0:
     import-local "^3.0.2"
     jest-cli "^29.7.0"
 
-jimp@^0.22.10:
+jimp@*, jimp@^0.22.10:
   version "0.22.10"
   resolved "https://registry.npmjs.org/jimp/-/jimp-0.22.10.tgz"
   integrity sha512-lCaHIJAgTOsplyJzC1w/laxSxrbSsEBw4byKwXgUdMmh+ayPsnidTblenQm+IvhIs44Gcuvlb6pd2LQ0wcKaKg==
