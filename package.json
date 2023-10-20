@@ -28,7 +28,11 @@
     "typescript",
     "npm"
   ],
-  "author": "Kevin Alex Nielsen",
+  "author": {
+    "name": "Kevin Alex Nielsen",
+    "email": "kevinanielsen@outlook.com",
+    "url": "https://kevinanielsen.com/"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.8.7",
