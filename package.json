@@ -1,6 +1,6 @@
 {
   "name": "tfjs-image-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple image classifier using tfjs and running in node.js",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,6 +10,10 @@
   ],
   "scripts": {
     "build": "tsup"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "repository": {
     "type": "git",
