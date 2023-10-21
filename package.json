@@ -9,7 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "mocha"
   },
   "homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
   "repository": {
@@ -36,6 +37,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/mocha": "^10.0.3",
     "@types/node": "^20.8.7",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
