@@ -14,14 +14,18 @@ type ClassifyImageType = (
   MODEL_DIR_PATH: string,
   IMAGE_FILE_PATH: string,
   METADATA: IMetadata
-) => Promise<ResultType[]>;
+) => Promise<ResultType[] | Error>;
 
 const classifyImage: ClassifyImageType = async (
   MODEL_DIR_PATH: string,
   IMAGE_FILE_PATH: string,
   METADATA: IMetadata
 ) => {
-  let labels: string[] = METADATA.labels;
+  if (!MODEL_DIR_PATH || !IMAGE_FILE_PATH || !METADATA) {
+    return new Error("MISSING_PARAMETER");
+  }
+
+  let labels: string[] = METADATA["labels"];
 
   const model = await tf.loadLayersModel(`${MODEL_DIR_PATH}/model.json`);
 

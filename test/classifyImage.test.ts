@@ -10,21 +10,41 @@ const imageNoHand =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Black_colour.jpg/640px-Black_colour.jpg";
 
 describe("classifyImage function", async () => {
-  it("returns hand when shown a picture of a hand", async () => {
-    const result = await classifyImage(model, imageHand, metadata);
+  describe("returns", async () => {
+    it("returns hand when shown a picture of a hand", async () => {
+      const result = await classifyImage(model, imageHand, metadata);
+      if (result instanceof Error) {
+        return new Error();
+      } else {
+        assert.equal(result[0].label, "Hand");
+      }
+    });
 
-    assert.equal(result[0].label, "Hand");
+    it("returns 'No hand' when shown a picture not including hand", async () => {
+      const result = await classifyImage(model, imageNoHand, metadata);
+
+      if (result instanceof Error) {
+        return new Error();
+      } else {
+        assert.equal(result[0].label, "No hand");
+      }
+    });
+
+    it("returns a probability level", async () => {
+      const result = await classifyImage(model, imageNoHand, metadata);
+      if (result instanceof Error) {
+        return new Error();
+      } else {
+        assert.notEqual(result[0].probability, null);
+      }
+    });
   });
+  describe("Error boundries", async () => {
+    it("returns an error when missing a parameter", async () => {
+      //@ts-expect-error
+      const result = await classifyImage(imageNoHand, metadata);
 
-  it("returns 'No hand' when shown a picture not including hand", async () => {
-    const result = await classifyImage(model, imageNoHand, metadata);
-
-    assert.equal(result[0].label, "No hand");
-  });
-
-  it("returns a probability level", async () => {
-    const result = await classifyImage(model, imageNoHand, metadata);
-
-    assert.notEqual(result[0].probability, null);
+      assert.ok(result instanceof Error);
+    });
   });
 });
