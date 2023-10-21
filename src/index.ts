@@ -71,4 +71,4 @@ const classifyImage: ClassifyImageType = async (
   return result.sort((a, b) => Number(b.probability) - Number(a.probability));
 };
 
-module.exports = classifyImage;
+export default classifyImage;
