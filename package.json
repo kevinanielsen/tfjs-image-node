@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "mocha"
+    "test": "mocha --require ts-node/register 'test/*.test.ts' --timeout 6000"
   },
   "homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
   "repository": {
