@@ -15,9 +15,16 @@ describe("classifyImage function", async () => {
 
     assert.equal(result[0].label, "Hand");
   });
+
   it("returns 'No hand' when shown a picture not including hand", async () => {
     const result = await classifyImage(model, imageNoHand, metadata);
 
     assert.equal(result[0].label, "No hand");
+  });
+
+  it("returns a probability level", async () => {
+    const result = await classifyImage(model, imageNoHand, metadata);
+
+    assert.notEqual(result[0].probability, null);
   });
 });
