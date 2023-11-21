@@ -12,18 +12,19 @@ type ResultType = {
 
 type ClassifyImageType = (
   MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string,
-  METADATA: IMetadata
+  IMAGE_FILE_PATH: string
 ) => Promise<ResultType[] | Error>;
 
 const classifyImage: ClassifyImageType = async (
   MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string,
-  METADATA: IMetadata
+  IMAGE_FILE_PATH: string
 ) => {
-  if (!MODEL_DIR_PATH || !IMAGE_FILE_PATH || !METADATA) {
+  if (!MODEL_DIR_PATH || !IMAGE_FILE_PATH) {
     return new Error("MISSING_PARAMETER");
   }
+
+  const res = await fetch(`${MODEL_DIR_PATH}/metadata.json`);
+  const METADATA: IMetadata = await res.json();
 
   let labels: string[] = METADATA["labels"];
 
