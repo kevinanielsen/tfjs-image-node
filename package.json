@@ -1,6 +1,6 @@
 {
   "name": "tfjs-image-node",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A simple image classifier using tfjs and running in node.js",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
