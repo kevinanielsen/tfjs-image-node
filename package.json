@@ -1,6 +1,6 @@
 {
   "name": "tfjs-image-node",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple image classifier using tfjs and running in node.js",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "mocha --require ts-node/register 'test/*.test.ts' --timeout 6000"
+    "test": "mocha --require ts-node/register 'test/**/*.test.ts' --timeout 6000"
   },
   "homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
   "repository": {
