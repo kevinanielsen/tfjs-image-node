@@ -1,5 +1,5 @@
 import { describe } from "mocha";
-import classifyImage from "../src/index";
+import classifyImage from "../src/classifyImageJS";
 import assert from "assert";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
@@ -10,10 +10,10 @@ const imageNoHand =
 const imageHandJPEG = "./test/images/hand.jpeg";
 const imageHandPNG = "./test/images/hand.png";
 
-describe("classifyImage function - REGULAR PLATFORM", async () => {
+describe("classifyImage function - JS PLATFORM", async () => {
   describe("Result returns", async () => {
     it("returns hand when shown a picture of a hand", async () => {
-      const result = await classifyImage(model, imageHand, "regular");
+      const result = await classifyImage(model, imageHand);
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -22,7 +22,7 @@ describe("classifyImage function - REGULAR PLATFORM", async () => {
     });
 
     it("returns 'No hand' when shown a picture not including hand", async () => {
-      const result = await classifyImage(model, imageNoHand, "regular");
+      const result = await classifyImage(model, imageNoHand);
 
       if (result instanceof Error) {
         return new Error();
@@ -32,7 +32,7 @@ describe("classifyImage function - REGULAR PLATFORM", async () => {
     });
 
     it("returns a probability level", async () => {
-      const result = await classifyImage(model, imageNoHand, "regular");
+      const result = await classifyImage(model, imageNoHand);
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -50,7 +50,7 @@ describe("classifyImage function - REGULAR PLATFORM", async () => {
   });
   describe("Image types", async () => {
     it("returns a result on url image-input", async () => {
-      const result = await classifyImage(model, imageHand, "regular");
+      const result = await classifyImage(model, imageHand);
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -58,7 +58,7 @@ describe("classifyImage function - REGULAR PLATFORM", async () => {
       }
     });
     it("returns a result on JPEG image-input", async () => {
-      const result = await classifyImage(model, imageHandJPEG, "regular");
+      const result = await classifyImage(model, imageHandJPEG);
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -66,7 +66,7 @@ describe("classifyImage function - REGULAR PLATFORM", async () => {
       }
     });
     it("returns a result on PNG image-input", async () => {
-      const result = await classifyImage(model, imageHandPNG, "regular");
+      const result = await classifyImage(model, imageHandPNG);
       if (result instanceof Error) {
         return new Error();
       } else {
