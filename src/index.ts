@@ -1,4 +1,3 @@
-const tf = require("@tensorflow/tfjs");
 const Jimp = require("jimp");
 
 interface IMetadata extends JSON {
@@ -12,13 +11,19 @@ type ResultType = {
 
 type ClassifyImageType = (
   MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string
+  IMAGE_FILE_PATH: string,
+  PLATFORM?: "node" | "regular"
 ) => Promise<ResultType[] | Error>;
 
 const classifyImage: ClassifyImageType = async (
-  MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string
+  MODEL_DIR_PATH,
+  IMAGE_FILE_PATH,
+  PLATFORM = "node"
 ) => {
+  const tf = require(PLATFORM === "node"
+    ? "@tensorflow/tfjs-node"
+    : "@tensorflow/tfjs");
+
   if (!MODEL_DIR_PATH || !IMAGE_FILE_PATH) {
     return new Error("MISSING_PARAMETER");
   }
