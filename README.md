@@ -73,5 +73,16 @@ const image =
         The file path or URL to the image you want classified.
       </td>
     </tr>
+    <tr>
+      <td>
+        PLATFORM
+      </td>
+      <td>
+        "node" | "regular"
+      </td>
+      <td>
+        Choose whether to use tfjs-node or regular tfjs as the ML Platform (Defaults to node).
+      </td>
+    </tr>
   </tdata>
 </table>
