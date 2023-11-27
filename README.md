@@ -16,16 +16,24 @@ pnpm add tfjs-image-node
 
 ### Import
 
+tfjs-image-node has two different exports. One for the tfjs-node platform and one for the regular tfjs package - one package is preferred for operations in the node runtime, the other is preferred for regular javascript.
+
 ```typescript
-const classifyImage = require("tfjs-image-node");
+// Using Node Platform
+const classifyImage = require("tfjs-image-node/node");
 // or
-import { classifyImage } from "tfjs-image-node";
+import classifyImage from "tfjs-image-node/node";
+
+// Using JS Platform
+const classifyImage = require("tfjs-image-node/js");
+// or
+import classifyImage from "tfjs-image-node/js";
 ```
 
 ## Example
 
 ```typescript
-const classifyImage = require("tfjs-image-node");
+import classifyImage from "tfjs-image-node/node";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
 const image =
@@ -71,17 +79,6 @@ const image =
       </td>
       <td>
         The file path or URL to the image you want classified.
-      </td>
-    </tr>
-    <tr>
-      <td>
-        PLATFORM
-      </td>
-      <td>
-        "node" | "regular"
-      </td>
-      <td>
-        Choose whether to use tfjs-node or regular tfjs as the ML Platform (Defaults to node).
       </td>
     </tr>
   </tdata>

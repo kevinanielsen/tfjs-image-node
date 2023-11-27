@@ -1,5 +1,5 @@
 const Jimp = require("jimp");
-const tf = require("@tensorflow/tfjs-node");
+const tf = require("@tensorflow/tfjs");
 
 interface IMetadata extends JSON {
   labels: string[];

@@ -1,5 +1,5 @@
 import { describe } from "mocha";
-import classifyImage from "../src/index";
+import classifyImage from "../src/classifyImageNode";
 import assert from "assert";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
@@ -10,7 +10,7 @@ const imageNoHand =
 const imageHandJPEG = "./test/images/hand.jpeg";
 const imageHandPNG = "./test/images/hand.png";
 
-describe("classifyImage function", async () => {
+describe("classifyImage function - NODE PLATFORM", async () => {
   describe("Result returns", async () => {
     it("returns hand when shown a picture of a hand", async () => {
       const result = await classifyImage(model, imageHand);
