@@ -1,5 +1,5 @@
 import { describe } from "mocha";
-import classifyImage from "../src/classifyImageJS";
+import classifyImage from "../src/js";
 import assert from "assert";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
