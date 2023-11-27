@@ -1,13 +1,30 @@
 {
   "name": "tfjs-image-node",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple image classifier using tfjs and running in node.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/node/index.js",
+  "module": "./dist/node/index.mjs",
+  "types": "./dist/node/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/node/index.js",
+      "require": "./dist/node/index.js",
+      "types": "./dist/node/index.d.ts"
+    },
+    "./node": {
+      "import": "./dist/node/index.js",
+      "require": "./dist/node/index.js",
+      "types": "./dist/node/index.d.ts"
+    },
+    "./js": {
+      "import": "./dist/js/index.js",
+      "require": "./dist/js/index.js",
+      "types": "./dist/js/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "test": "mocha --require ts-node/register 'test/**/*.test.ts' --timeout 6000"
