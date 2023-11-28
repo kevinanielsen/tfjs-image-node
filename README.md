@@ -2,7 +2,6 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/dwyl/hapi-auth-jwt2/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kevinanielsen/tfjs-image-node?targetFile=package.json)
 [![npm version](https://badge.fury.io/js/tfjs-image-node.svg)](https://badge.fury.io/js/tfjs-image-node)
-[![NPM](https://github.com/kevinanielsen/tfjs-image-node/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/kevinanielsen/tfjs-image-node/actions/workflows/npm-publish.yml/badge.svg)
 [![CI](https://github.com/kevinanielsen/tfjs-image-node/actions/workflows/main.yml/badge.svg)](https://github.com/kevinanielsen/tfjs-image-node/actions/workflows/main.yml)
 
 A simple image classifier using tfjs, that can run in Node.js
