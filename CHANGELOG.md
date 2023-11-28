@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.0.1
+
+### Patch Changes
+
+- [`42adf7e`](https://github.com/kevinanielsen/tfjs-image-node/commit/42adf7e90db05b6d4189c09be89e4a099c0e831b) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - Change access to public in changeset config
+
 ## 2.0.0
 
 ### Major Changes
