@@ -81,5 +81,16 @@ const image =
         The file path or URL to the image you want classified.
       </td>
     </tr>
+    <tr>
+      <td>
+        PLATFORM
+      </td>
+      <td>
+        "node" or "classic"
+      </td>
+      <td>
+        Choose the platform to use for the computation of the prediction. If you want to use the tfjs-node platform, use "node" as the parameter, otherwise use "classic".
+      </td>
+    </tr>
   </tdata>
 </table>

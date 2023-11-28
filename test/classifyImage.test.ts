@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import classifyImage from "../../src/js";
+import classifyImage from "../src";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
 const imageHand =
@@ -9,7 +9,7 @@ const imageNoHand =
 const imageHandJPEG = "./test/images/hand.jpeg";
 const imageHandPNG = "./test/images/hand.png";
 
-describe("classifyImage function - JS PLATFORM", async () => {
+describe("classifyImage function - Node", async () => {
   describe("Result returns", async () => {
     it("returns hand when shown a picture of a hand", async () => {
       const result = await classifyImage(model, imageHand);
