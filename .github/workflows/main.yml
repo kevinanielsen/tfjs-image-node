@@ -17,5 +17,6 @@ jobs:
           node-version: 16.x
           cache: "pnpm"
 
-      - run: pnpm install --force --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm rebuild @tensorflow/tfjs-node
       - run: pnpm run ci
