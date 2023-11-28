@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.0.2
+
+### Patch Changes
+
+- Add prettier and format
+
 ## 2.0.1
 
 ### Patch Changes
