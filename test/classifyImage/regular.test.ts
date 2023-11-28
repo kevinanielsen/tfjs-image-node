@@ -1,6 +1,5 @@
-import { describe } from "mocha";
+import { describe, it, expect } from "vitest";
 import classifyImage from "../../src/js";
-import assert from "assert";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
 const imageHand =
@@ -17,7 +16,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.equal(result[0].label, "Hand");
+        expect(result[0].label).toBe("Hand");
       }
     });
 
@@ -27,7 +26,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.equal(result[0].label, "No hand");
+        expect(result[0].label).toBe("No hand");
       }
     });
 
@@ -36,7 +35,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.notEqual(result[0].probability, null);
+        expect(result[0].probability).not.toBe(null);
       }
     });
   });
@@ -45,7 +44,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       //@ts-expect-error
       const result = await classifyImage(imageNoHand);
 
-      assert.ok(result instanceof Error);
+      expect(result).toBeInstanceOf(Error);
     });
   });
   describe("Image types", async () => {
@@ -54,7 +53,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.equal(result[0].label, "Hand");
+        expect(result[0].label).toBe("Hand");
       }
     });
     it("returns a result on JPEG image-input", async () => {
@@ -62,7 +61,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.equal(result[0].label, "Hand");
+        expect(result[0].label).toBe("Hand");
       }
     });
     it("returns a result on PNG image-input", async () => {
@@ -70,7 +69,7 @@ describe("classifyImage function - JS PLATFORM", async () => {
       if (result instanceof Error) {
         return new Error();
       } else {
-        assert.equal(result[0].label, "Hand");
+        expect(result[0].label).toBe("Hand");
       }
     });
   });

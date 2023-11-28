@@ -26,8 +26,9 @@
     }
   },
   "scripts": {
-    "build": "tsup",
-    "test": "mocha --require ts-node/register 'test/**/*.test.ts' --timeout 6000"
+    "dev": "vitest",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run"
   },
   "homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
   "repository": {
@@ -54,12 +55,11 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/mocha": "^10.0.5",
     "@types/node": "^20.9.3",
-    "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^4.13.0",
