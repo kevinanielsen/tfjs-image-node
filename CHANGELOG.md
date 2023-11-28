@@ -1,5 +1,27 @@
 # tfjs-image-node
 
+## 2.0.0
+
+### Major Changes
+
+- [#14](https://github.com/kevinanielsen/tfjs-image-node/pull/14) [`78cca17`](https://github.com/kevinanielsen/tfjs-image-node/commit/78cca177edab647d327afcd4de2cf8f3bb8010b2) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - # Refactor classifyImage to use single file and import and reintroduce "platform" parameter.
+
+  ## _WHAT:_
+
+  The classifyImage function has been refactored to use single file and import.
+
+  ## _HOW:_
+
+  Change function call to
+
+  ```typescript
+  classifyImage(model, image, "node");
+  // OR
+  classifyImage(model, image, "classic");
+  ```
+
+  The default platform will be node. It is not necessary to specify this.
+
 ## 1.1.5
 
 ### Patch Changes
