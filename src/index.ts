@@ -1,5 +1,7 @@
 const Jimp = require("jimp");
-const tf = require("@tensorflow/tfjs-node");
+const tfNode = require("@tensorflow/tfjs-node");
+const tfJs = require("@tensorflow/tfjs");
+let tf: any;
 
 interface IMetadata extends JSON {
   labels: string[];
@@ -12,7 +14,8 @@ type ResultType = {
 
 type ClassifyImageType = (
   MODEL_DIR_PATH: string,
-  IMAGE_FILE_PATH: string
+  IMAGE_FILE_PATH: string,
+  PLATFORM?: "node" | "classic"
 ) => Promise<ResultType[] | Error>;
 
 const classifyImage: ClassifyImageType = async (
@@ -20,12 +23,22 @@ const classifyImage: ClassifyImageType = async (
   IMAGE_FILE_PATH,
   PLATFORM = "node"
 ) => {
+  PLATFORM === "node" ? (tf = tfNode) : (tf = tfJs);
+
   if (!MODEL_DIR_PATH || !IMAGE_FILE_PATH) {
     return new Error("MISSING_PARAMETER");
   }
 
   const res = await fetch(`${MODEL_DIR_PATH}/metadata.json`);
+  if (res.status !== 200) {
+    return new Error("METADATA_NOT_FOUND");
+  }
+
   const METADATA: IMetadata = await res.json();
+
+  if (METADATA["labels"].length === 0 || METADATA["labels"]! instanceof Array) {
+    return new Error("NO_METADATA_LABELS");
+  }
 
   let labels: string[] = METADATA["labels"];
 

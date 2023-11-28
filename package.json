@@ -2,24 +2,12 @@
   "name": "tfjs-image-node",
   "version": "1.1.4",
   "description": "A simple image classifier using tfjs and running in node.js",
-  "main": "./dist/node/index.js",
-  "module": "./dist/node/index.mjs",
-  "types": "./dist/node/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/node/index.js",
-      "require": "./dist/node/index.js",
-      "types": "./dist/node/index.d.ts"
-    },
-    "./js": {
-      "import": "./dist/js/index.js",
-      "require": "./dist/js/index.js",
-      "types": "./dist/js/index.d.ts"
-    }
-  },
   "scripts": {
     "dev": "vitest",
     "build": "tsup --format cjs,esm --dts",
