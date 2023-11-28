@@ -15,13 +15,13 @@ type ResultType = {
 type ClassifyImageType = (
   MODEL_DIR_PATH: string,
   IMAGE_FILE_PATH: string,
-  PLATFORM?: "node" | "classic"
+  PLATFORM?: "node" | "classic",
 ) => Promise<ResultType[] | Error>;
 
 const classifyImage: ClassifyImageType = async (
   MODEL_DIR_PATH,
   IMAGE_FILE_PATH,
-  PLATFORM = "node"
+  PLATFORM = "node",
 ) => {
   PLATFORM === "node" ? (tf = tfNode) : (tf = tfJs);
 
@@ -48,7 +48,7 @@ const classifyImage: ClassifyImageType = async (
   image.cover(
     224,
     224,
-    Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE
+    Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE,
   );
 
   const NUM_OF_CHANNELS = 3;
@@ -70,7 +70,7 @@ const classifyImage: ClassifyImageType = async (
       values[i * NUM_OF_CHANNELS + 1] = pixel.g;
       values[i * NUM_OF_CHANNELS + 2] = pixel.b;
       i++;
-    }
+    },
   );
 
   const outShape = [224, 224, NUM_OF_CHANNELS];
