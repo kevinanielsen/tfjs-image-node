@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.0.3
+
+### Patch Changes
+
+- [#19](https://github.com/kevinanielsen/tfjs-image-node/pull/19) [`84c2bb7`](https://github.com/kevinanielsen/tfjs-image-node/commit/84c2bb71cd35c3b8b72ef2bd53ed53f1b4f0b140) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - Add filter to remove necessity for no "/" at end of MODEL_DIR_PATH
+
 ## 2.0.2
 
 ### Patch Changes
