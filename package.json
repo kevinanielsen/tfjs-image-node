@@ -14,11 +14,6 @@
       "require": "./dist/node/index.js",
       "types": "./dist/node/index.d.ts"
     },
-    "./node": {
-      "import": "./dist/node/index.js",
-      "require": "./dist/node/index.js",
-      "types": "./dist/node/index.d.ts"
-    },
     "./js": {
       "import": "./dist/js/index.js",
       "require": "./dist/js/index.js",
@@ -27,8 +22,10 @@
   },
   "scripts": {
     "dev": "vitest",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "test": "vitest run"
+    "build": "tsup --format cjs,esm --dts",
+    "test": "vitest run",
+    "lint": "tsc",
+    "ci": "pnpm run lint && pnpm run test && pnpm run build"
   },
   "homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
   "repository": {
