@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import classifyImage from "../../src/node";
+import { describe, it, expect } from "vitest";
+import classifyImage from "../src";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
 const imageHand =
@@ -9,10 +9,10 @@ const imageNoHand =
 const imageHandJPEG = "./test/images/hand.jpeg";
 const imageHandPNG = "./test/images/hand.png";
 
-describe("classifyImage function - NODE PLATFORM", async () => {
+describe("classifyImage function - Classic", async () => {
   describe("Result returns", async () => {
     it("returns hand when shown a picture of a hand", async () => {
-      const result = await classifyImage(model, imageHand);
+      const result = await classifyImage(model, imageHand, "classic");
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -21,7 +21,7 @@ describe("classifyImage function - NODE PLATFORM", async () => {
     });
 
     it("returns 'No hand' when shown a picture not including hand", async () => {
-      const result = await classifyImage(model, imageNoHand);
+      const result = await classifyImage(model, imageNoHand, "classic");
 
       if (result instanceof Error) {
         return new Error();
@@ -31,7 +31,7 @@ describe("classifyImage function - NODE PLATFORM", async () => {
     });
 
     it("returns a probability level", async () => {
-      const result = await classifyImage(model, imageNoHand);
+      const result = await classifyImage(model, imageNoHand, "classic");
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -41,15 +41,14 @@ describe("classifyImage function - NODE PLATFORM", async () => {
   });
   describe("Error boundries", async () => {
     it("returns an error when missing a parameter", async () => {
-      //@ts-expect-error
-      const result = await classifyImage(imageNoHand);
+      const result = await classifyImage(imageNoHand, "classic");
 
       expect(result).toBeInstanceOf(Error);
     });
   });
   describe("Image types", async () => {
     it("returns a result on url image-input", async () => {
-      const result = await classifyImage(model, imageHand);
+      const result = await classifyImage(model, imageHand, "classic");
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -57,7 +56,7 @@ describe("classifyImage function - NODE PLATFORM", async () => {
       }
     });
     it("returns a result on JPEG image-input", async () => {
-      const result = await classifyImage(model, imageHandJPEG);
+      const result = await classifyImage(model, imageHandJPEG, "classic");
       if (result instanceof Error) {
         return new Error();
       } else {
@@ -65,7 +64,7 @@ describe("classifyImage function - NODE PLATFORM", async () => {
       }
     });
     it("returns a result on PNG image-input", async () => {
-      const result = await classifyImage(model, imageHandPNG);
+      const result = await classifyImage(model, imageHandPNG, "classic");
       if (result instanceof Error) {
         return new Error();
       } else {
