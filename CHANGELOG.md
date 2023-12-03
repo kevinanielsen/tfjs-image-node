@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.0.4
+
+### Patch Changes
+
+- [`3adc2c7`](https://github.com/kevinanielsen/tfjs-image-node/commit/3adc2c7b789cf3464ceee5cb5aad3794ae62f0bc) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - FIX! Add dist folder to files
+
 ## 2.0.3
 
 ### Patch Changes
