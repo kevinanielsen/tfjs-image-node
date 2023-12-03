@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.1.0
+
+### Minor Changes
+
+- [`73fafce`](https://github.com/kevinanielsen/tfjs-image-node/commit/73fafcef5cd98a2fc67a952dd7057256381bc1a6) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - FIX!!!
+
 ## 2.0.4
 
 ### Patch Changes
