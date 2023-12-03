@@ -1,5 +1,11 @@
 # tfjs-image-node
 
+## 2.2.0
+
+### Minor Changes
+
+- [#23](https://github.com/kevinanielsen/tfjs-image-node/pull/23) [`cee7c65`](https://github.com/kevinanielsen/tfjs-image-node/commit/cee7c658e502d68befaba8818e4346254e591301) Thanks [@kevinanielsen](https://github.com/kevinanielsen)! - add option to use specified metadata
+
 ## 2.1.0
 
 ### Minor Changes
