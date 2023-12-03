@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import classifyImage from "../src";
+import * as metadata from "./testFiles/metadata.json";
 
 const model = "https://teachablemachine.withgoogle.com/models/jAIOHvmge";
 const imageHand = "https://www.stgeorges.nhs.uk/wp-content/uploads/2014/03/hand-2.jpeg";
@@ -31,6 +32,15 @@ describe("classifyImage function - Classic", async () => {
 
 		it("returns a probability level", async () => {
 			const result = await classifyImage(model, imageNoHand, "classic");
+			if (result instanceof Error) {
+				return new Error();
+			} else {
+				expect(result[0].probability).not.toBe(null);
+			}
+		});
+
+		it("works with specified metadata", async () => {
+			const result = await classifyImage(model, imageNoHand, undefined, metadata);
 			if (result instanceof Error) {
 				return new Error();
 			} else {

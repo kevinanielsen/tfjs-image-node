@@ -3,8 +3,16 @@ const tfNode = require("@tensorflow/tfjs-node");
 const tfJs = require("@tensorflow/tfjs");
 let tf: any;
 
-interface IMetadata extends JSON {
+interface IMetadata {
+	tfjsVersion: string;
+	tmVersion: string;
+	packageVersion: string;
+	packageName: string;
+	timeStamp: string;
+	userMetadata: {};
+	modelName: string;
 	labels: string[];
+	imageSize: number;
 }
 
 type ResultType = {
@@ -15,7 +23,8 @@ type ResultType = {
 type ClassifyImageType = (
 	MODEL_DIR_PATH: string,
 	IMAGE_FILE_PATH: string,
-	PLATFORM?: "node" | "classic"
+	PLATFORM?: "node" | "classic",
+	METADATA?: IMetadata
 ) => Promise<ResultType[] | Error>;
 
 const filterInputPath = (inputPath: string) => {
@@ -28,7 +37,8 @@ const filterInputPath = (inputPath: string) => {
 const classifyImage: ClassifyImageType = async (
 	MODEL_DIR_PATH,
 	IMAGE_FILE_PATH,
-	PLATFORM = "node"
+	PLATFORM = "node",
+	METADATA
 ) => {
 	PLATFORM === "node" ? (tf = tfNode) : (tf = tfJs);
 
@@ -36,20 +46,19 @@ const classifyImage: ClassifyImageType = async (
 		return new Error("MISSING_PARAMETER");
 	}
 
-	MODEL_DIR_PATH = filterInputPath(MODEL_DIR_PATH);
+	let labels: string[];
 
-	const res = await fetch(`${MODEL_DIR_PATH}/metadata.json`);
-	if (res.status !== 200) {
-		return new Error("METADATA_NOT_FOUND");
+	if (!METADATA) {
+		const res = await fetch(`${MODEL_DIR_PATH}/metadata.json`);
+		if (res.status !== 200) {
+			return new Error("METADATA_NOT_FOUND" + res);
+		} else {
+			const json = await res.json();
+			labels = json["labels"];
+		}
+	} else {
+		labels = METADATA["labels"];
 	}
-
-	const METADATA: IMetadata = await res.json();
-
-	if (METADATA["labels"].length === 0 || METADATA["labels"]! instanceof Array) {
-		return new Error("NO_METADATA_LABELS");
-	}
-
-	let labels: string[] = METADATA["labels"];
 
 	const model = await tf.loadLayersModel(`${MODEL_DIR_PATH}/model.json`);
 
