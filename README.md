@@ -86,10 +86,21 @@ const image = "https://www.stgeorges.nhs.uk/wp-content/uploads/2014/03/hand-2.jp
         PLATFORM
       </td>
       <td>
-        "node" or "classic"
+        "node" or "classic" (optional)
       </td>
       <td>
         Choose the platform to use for the computation of the prediction. If you want to use the tfjs-node platform, use "node" as the parameter, otherwise use "classic".
+      </td>
+    </tr>
+    <tr>
+      <td>
+        METADATA
+      </td>
+      <td>
+        metadata.json (optional)
+      </td>
+      <td>
+        If you want to specify a set of metadata for the model.
       </td>
     </tr>
   </tdata>
