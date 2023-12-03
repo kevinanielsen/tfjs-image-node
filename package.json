@@ -6,7 +6,7 @@
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"files": [
-		"./dist"
+		"dist"
 	],
 	"scripts": {
 		"dev": "vitest",
@@ -15,7 +15,7 @@
 		"lint": "tsc",
 		"ci": "pnpm run lint && pnpm run test && pnpm run build",
 		"prerelease": "pnpm run lint && pnpm format && pnpm run test && pnpm run build",
-		"release": "changeset publish",
+		"release": "pnpm build && changeset publish",
 		"format": "prettier --write ."
 	},
 	"homepage": "https://github.com/kevinanielsen/tfjs-image-node/",
